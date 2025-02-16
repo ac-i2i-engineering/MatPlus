@@ -1,13 +1,21 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-class BarPlot():
 
-    def __init__(self,x,y,lowerlimx = None,lowerlimy = None, upperlimx = None, upperlimy = None, wd = None, lw = None):
-        '''
-        
-        '''
-        
+class BarPlot:
+    def __init__(
+        self,
+        x,
+        y,
+        lowerlimx=None,
+        lowerlimy=None,
+        upperlimx=None,
+        upperlimy=None,
+        wd=None,
+        lw=None,
+    ):
+        """ """
+
         self.x = x
         self.y = y
         self.lowerlimx = lowerlimx
@@ -22,7 +30,7 @@ class BarPlot():
             self.upperlimx = np.max(x) * 1.1
         if self.upperlimy is None:
             self.upperlimy = np.max(y) * 1.1
-        
+
         self.width = wd
         self.linewidth = lw
 
@@ -30,16 +38,15 @@ class BarPlot():
             self.linewidth = 1
         if self.width is None:
             self.width = 1
-    
 
     def plot(self):
-        
-        plt.style.use('_mpl-gallery')
+        plt.style.use("_mpl-gallery")
         fig, ax = plt.subplots()
         ax.bar(self.x, self.y, width=self.width, edgecolor="black", linewidth=1)
-        ax.set(xlim=(self.lowerlimx, self.upperlimx), xticks=np.arange(self.lowerlimx+1, self.upperlimx),
-            ylim=(self.lowerlimy, self.upperlimy), yticks=np.arange(self.lowerlimy+1, self.upperlimy))
+        ax.set(
+            xlim=(self.lowerlimx, self.upperlimx),
+            xticks=np.arange(self.lowerlimx + 1, self.upperlimx),
+            ylim=(self.lowerlimy, self.upperlimy),
+            yticks=np.arange(self.lowerlimy + 1, self.upperlimy),
+        )
         plt.show()
-
-
-
