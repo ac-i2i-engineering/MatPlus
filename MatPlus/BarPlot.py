@@ -14,21 +14,21 @@ class BarPlot():
         self.lowerlimy = lowerlimy
         self.upperlimx = upperlimx
         self.upperlimy = upperlimy
-        if self.lowerlimx == None:
+        if self.lowerlimx is None:
             self.lowerlimx = np.min(x) * 0.9
-        if self.lowerlimy == None:
+        if self.lowerlimy is None:
             self.lowerlimy = np.min(y) * 0.9
-        if self.upperlimx == None:
+        if self.upperlimx is None:
             self.upperlimx = np.max(x) * 1.1
-        if self.upperlimy == None:
+        if self.upperlimy is None:
             self.upperlimy = np.max(y) * 1.1
         
         self.width = wd
         self.linewidth = lw
 
-        if self.linewidth == None:
+        if self.linewidth is None:
             self.linewidth = 1
-        if self.width == None:
+        if self.width is None:
             self.width = 1
     
 
