@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import plot;
 
 class BarPlot():
 
@@ -38,8 +37,5 @@ class BarPlot():
             ylim=(self.lowerlimy, self.upperlimy), yticks=np.arange(self.lowerlimy+1, self.upperlimy))
         plt.show()
 
-x = 0.5 + np.arange(8)
-y = [4.8, 5.5, 3.5, 4.6, 6.5, 6.6, 2.6, 3.0]
-barplot1 = BarPlot(x,y,None,None,None,None,1,1)
-barplot1.plot()
+
 

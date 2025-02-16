@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import plot as plot;
 
 class ScatterPlot():
     def __init__(self,x,y,lowerlimx = None,lowerlimy = None, upperlimx = None, upperlimy = None, sizes = [], colors = [], vmin = 0, vmax = 0,width = 1):
@@ -54,17 +53,3 @@ class ScatterPlot():
         ax.set(xlim=(self.lowerlimx, self.upperlimx), xticks=np.arange(self.lowerlimx+1, self.upperlimx),
         ylim=(self.lowerlimy, self.upperlimy), yticks=np.arange(self.lowerlimy+1, self.upperlimy))
         plt.show()
-
-
-np.random.seed(3)
-x = 4 + np.random.normal(0, 2, 24)
-y = 4 + np.random.normal(0, 2, len(x))
-sizes = np.random.uniform(15, 80, len(x))
-colors = np.random.uniform(15, 80, len(x))
-
-scatterplot1 = ScatterPlot(x,y,None,None,None,None,sizes,colors,0,40)
-
-
-
-
-scatterplot1.plot()
