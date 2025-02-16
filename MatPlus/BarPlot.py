@@ -4,6 +4,10 @@ import numpy as np
 class BarPlot():
 
     def __init__(self,x,y,lowerlimx = None,lowerlimy = None, upperlimx = None, upperlimy = None, wd = None, lw = None):
+        '''
+        
+        '''
+        
         self.x = x
         self.y = y
         self.lowerlimx = lowerlimx
@@ -32,7 +36,7 @@ class BarPlot():
         
         plt.style.use('_mpl-gallery')
         fig, ax = plt.subplots()
-        ax.bar(x, y, width=self.width, edgecolor="black", linewidth=1)
+        ax.bar(self.x, self.y, width=self.width, edgecolor="black", linewidth=1)
         ax.set(xlim=(self.lowerlimx, self.upperlimx), xticks=np.arange(self.lowerlimx+1, self.upperlimx),
             ylim=(self.lowerlimy, self.upperlimy), yticks=np.arange(self.lowerlimy+1, self.upperlimy))
         plt.show()
