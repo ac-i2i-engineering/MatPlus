@@ -17,20 +17,35 @@ class ScatterPlot:
         vmax=0,
         width=1,
     ):
-        """Initializes Scatterplot object with the following parameters:
-        type: The type of the plot
-        x: The x-axis data
-        y: The y-axis data
+        """
+        A class to create scatter plots with optional axis limits and styling.
 
-        lowerlimx: The lower limit of x-axis.  If None, it will be set to 90% of the minimum x value.
-        lowerlimy: The lower limit of y-axis. If None, it will be set to 90% of the minimum y value.
-        upperlimx: The upper limit of x-axis. If None, it will be set to 110% of the maximum x value.
-        upperlimy: The upper limit of y-axis. If None, it will be set to 110% of the maximum y value.
-        sizes: The size of the data points
-        colors: The color of the data points
-        vmin: The minimum value of the color map
-        vmax: The maximum value of the color map
-        width: The width of the plot.
+        Attributes:
+        ----------
+        type : str
+            The type of the plot.
+        x : array-like
+            The x coordinates of the data points.
+        y : array-like
+            The y coordinates of the data points.
+        lowerlimx : float, optional
+            The lower limit for the x-axis. If None, it is set to 90% of the minimum x value.
+        lowerlimy : float, optional
+            The lower limit for the y-axis. If None, it is set to 90% of the minimum y value.
+        upperlimx : float, optional
+            The upper limit for the x-axis. If None, it is set to 110% of the maximum x value.
+        upperlimy : float, optional
+                The upper limit for the y-axis. If None, it is set to 110% of the maximum y value.
+        sizes : array-like
+            The sizes of the data points.
+        colors : array-like
+            The colors of the data points.
+        vmin : float
+            The minimum value of the color map.
+        vmax : float
+            The maximum value of the color map.
+        width : float
+            The width of the plot.
         """
 
         self.type = type
@@ -46,12 +61,13 @@ class ScatterPlot:
         self.vmax = vmax
         self.width = width
 
-        # Set default lower limit for x-axis/y-axis if not provided
+        # Set default axis limits if not provided
+        # Lower limit for x-axis/y-axis
         if self.lowerlimx is None:
             self.lowerlimx = np.min(x) * 0.9
         if self.lowerlimy is None:
             self.lowerlimy = np.min(y) * 0.9
-        # Set default upper limit for x-axis/y-axis if not provided
+        # Upper limit for x-axis/y-axis
         if self.upperlimx is None:
             self.upperlimx = np.max(x) * 1.1
         if self.upperlimy is None:
@@ -59,7 +75,8 @@ class ScatterPlot:
 
     def plot(self):
         """
-        Plots the scatter plot with the given parameters
+        Constructs all the necessary attributes for the ScatterPlot object.
+        Plots the scatter plot with the given parameters.
         """
         # Plots the scatter plot with the given parameters
         fig, ax = plt.subplots()
