@@ -46,15 +46,6 @@ class BoxPlot:
         # Set orientation using new parameter name
         orientation = "vertical" if self.vert else "horizontal"
 
-        # Create boxplot with proper orientation
-        bp = ax.boxplot(
-            self.data,
-            notch=self.notch,
-            sym=self.sym,
-            orientation=orientation,
-            whis=self.whis,
-        )
-
         # Set ticks properly
         if orientation == "vertical":
             ax.set_xticks([1])

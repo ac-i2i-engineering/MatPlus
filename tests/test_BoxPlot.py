@@ -9,8 +9,8 @@ def test_boxplot_creation():
     boxplot = BoxPlot(data, sym="r")
     assert boxplot.data == data
     assert boxplot.sym == "r"
-    assert boxplot.notch == False
-    assert boxplot.vert == True
+    assert boxplot.notch is False
+    assert boxplot.vert is True
     assert boxplot.whis == 1.5
 
 
@@ -31,9 +31,9 @@ def test_boxplot_statistics():
 def test_boxplot_parameters():
     data = [1, 2, 3, 4, 5]
     boxplot = BoxPlot(data, notch=True, sym="x", vert=False, whis=2.0)
-    assert boxplot.notch == True
+    assert boxplot.notch is True
     assert boxplot.sym == "x"
-    assert boxplot.vert == False
+    assert boxplot.vert is False
     assert boxplot.whis == 2.0
 
 
@@ -48,7 +48,3 @@ def test_boxplot_plot():
     # Just verify the plot method runs without error
     boxplot.plot()
     plt.close()  # Clean up plot
-
-
-if __name__ == "__main__":
-    pytest.main()
