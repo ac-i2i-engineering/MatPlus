@@ -59,15 +59,25 @@ class BoxPlot:
         plt.style.use("_mpl-gallery")
         fig, ax = plt.subplots()
 
-        # Set orientation using new parameter name
-        orientation = "vertical" if self.vert else "horizontal"
+        # Create boxplot with proper orientation
+        bp = ax.boxplot(
+            [self.data], notch=self.notch, sym=self.sym, vert=self.vert, whis=self.whis
+        )
 
-        # Set ticks properly
-        if orientation == "vertical":
+        # Set labels and ticks
+        if self.vert:
+            ax.set_xlabel("Data")
+            ax.set_ylabel("Value")
             ax.set_xticks([1])
-            ax.set_xticklabels(["Data"])
         else:
+            ax.set_xlabel("Value")
+            ax.set_ylabel("Data")
             ax.set_yticks([1])
-            ax.set_yticklabels(["Data"])
+
+        # Add grid for better readability
+        ax.grid(True, linestyle="--", alpha=0.7)
+
+        # Adjust layout to prevent label clipping
+        plt.tight_layout()
 
         plt.show()
