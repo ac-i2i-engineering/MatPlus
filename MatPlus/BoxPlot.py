@@ -11,15 +11,31 @@ class BoxPlot:
         vert: vertical orientation (deprecated, use orientation instead)
         whis: whisker length in number of IQR
         """
+        # Validate data type
+        if not isinstance(data, (list, np.ndarray)):
+            raise TypeError("Data must be a list or numpy array")
+
+        # Validate numeric data
+        try:
+            numeric_data = [float(x) for x in data]
+        except (ValueError, TypeError):
+            raise TypeError("All elements must be numeric")
+
+        # Validate data length
         if not data or len(data) == 0:
             raise ValueError("Data array cannot be empty")
 
-        self.data = data
+        # Validate whis parameter
+        if whis <= 0:
+            raise ValueError("Whisker length must be positive")
+
+        self.data = numeric_data
         self.notch = notch
         self.sym = sym
         self.vert = vert
         self.whis = whis
 
+    # Rest of the class implementation remains the same
     def median(self):
         """Calculate median of the data"""
         return float(np.median(self.data))
