@@ -59,11 +59,6 @@ class BoxPlot:
         plt.style.use("_mpl-gallery")
         fig, ax = plt.subplots()
 
-        # Create boxplot with proper orientation
-        bp = ax.boxplot(
-            [self.data], notch=self.notch, sym=self.sym, vert=self.vert, whis=self.whis
-        )
-
         # Set labels and ticks
         if self.vert:
             ax.set_xlabel("Data")
