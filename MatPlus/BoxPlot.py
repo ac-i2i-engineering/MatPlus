@@ -4,12 +4,21 @@ import numpy as np
 
 class BoxPlot:
     def __init__(self, data, notch=False, sym="b", vert=True, whis=1.5):
-        """Initializes Boxplot object with the following parameters:
-        data: data to be plotted
-        notch: notch shape of the box
-        sym: symbol for outliers
-        vert: vertical orientation (deprecated, use orientation instead)
-        whis: whisker length in number of IQR
+        """
+        A class to create box plots with optional notches, symbols for outliers, and vertical orientation.
+
+        Attributes:
+        ----------
+        data : array-like
+            The data to be plotted.
+        notch : bool, optional
+            Whether to draw a notch to indicate the confidence interval around the median. Default is False.
+        sym : str, optional
+            The symbol for outliers. Default is "b".
+        vert : bool, optional
+            Whether to draw the box plot vertically. Default is True.
+        whis : float, optional
+            The length of the whiskers as a multiple of the interquartile range (IQR). Default is 1.5.
         """
         # Validate data type
         if not isinstance(data, (list, np.ndarray)):
