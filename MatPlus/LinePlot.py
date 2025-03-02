@@ -25,8 +25,6 @@ class LinePlot:
         Upper limit of the x-axis. Default is None (auto-determined).
     upperlimy : float, optional
         Upper limit of the y-axis. Default is None (auto-determined).
-    wd : float, optional
-        Width of the figure. Default is None (uses matplotlib default).
     lw : float, optional
         Line width for the plot. Default is None (uses matplotlib default).
 
@@ -53,7 +51,6 @@ class LinePlot:
         lowerlimy=None,
         upperlimx=None,
         upperlimy=None,
-        wd=None,
         lw=None,
     ):
         self.x = x
@@ -62,7 +59,6 @@ class LinePlot:
         self.lowerlimy = lowerlimy
         self.upperlimx = upperlimx
         self.upperlimy = upperlimy
-        self.width = wd
         self.linewidth = lw
 
     def plot(self):
