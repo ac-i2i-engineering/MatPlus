@@ -83,7 +83,6 @@ def test_plot_horizontal_orientation():
     data = [1, 2, 3, 4, 5]
     boxplot = BoxPlot(data, vert=False)
     boxplot.plot()
-    plt.close()
 
 
 def test_invalid_data_type():
