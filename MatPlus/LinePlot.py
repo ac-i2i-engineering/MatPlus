@@ -26,8 +26,8 @@ class LinePlot:
 
     def plot(self):
         plt.figure()
-        for i in range(len(self.x)):
-            plt.plot(self.x[i], self.y[i], linewidth=self.linewidth)
+        for x_data, y_data in zip(self.x, self.y):
+            plt.plot(x_data, y_data, linewidth=self.linewidth)
         plt.xlim(self.lowerlimx, self.upperlimx)
         plt.ylim(self.lowerlimy, self.upperlimy)
         plt.show()
