@@ -103,3 +103,17 @@ def test_single_value_data():
     assert q3 == 1
     assert boxplot.median() == 1
     assert len(boxplot.outliers()) == 0
+
+
+def test_boxplot_size():
+    data = [1, 2, 3, 4, 5]
+    boxplot = BoxPlot(data, size=5)
+    assert boxplot.size == 5
+
+    # Test with different size
+    boxplot = BoxPlot(data, size=10)
+    assert boxplot.size == 10
+
+    # Test default size
+    boxplot = BoxPlot(data)
+    assert boxplot.size == 3
