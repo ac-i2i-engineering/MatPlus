@@ -81,20 +81,40 @@
 <a class="viewcode-back" href="../../BoxPlot.html#MatPlus.BoxPlot.BoxPlot">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">BoxPlot</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A class to create box plots with optional notches, symbols for outliers, and vertical orientation.</span>
+<span class="sd">    A class for creating box plots with customizable properties.</span>
 
-<span class="sd">    Attributes:</span>
+<span class="sd">    The BoxPlot class provides a simplified interface for creating box plots</span>
+<span class="sd">    with options for notches, outlier symbols, and orientation.</span>
+
+<span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    data : array-like</span>
 <span class="sd">        The data to be plotted.</span>
 <span class="sd">    notch : bool, optional</span>
-<span class="sd">        Whether to draw a notch to indicate the confidence interval around the median. Default is False.</span>
+<span class="sd">        Whether to draw a notch to indicate the confidence interval around the median.</span>
+<span class="sd">        Default is False.</span>
 <span class="sd">    sym : str, optional</span>
 <span class="sd">        The symbol for outliers. Default is &quot;b&quot;.</span>
 <span class="sd">    vert : bool, optional</span>
 <span class="sd">        Whether to draw the box plot vertically. Default is True.</span>
 <span class="sd">    whis : float, optional</span>
-<span class="sd">        The length of the whiskers as a multiple of the interquartile range (IQR). Default is 1.5.</span>
+<span class="sd">        The length of the whiskers as a multiple of the interquartile range (IQR).</span>
+<span class="sd">        Default is 1.5.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; # Basic box plot</span>
+<span class="sd">    &gt;&gt;&gt; data = [1, 2, 2, 3, 3, 3, 4, 4, 5, 6]</span>
+<span class="sd">    &gt;&gt;&gt; box = BoxPlot(data)</span>
+<span class="sd">    &gt;&gt;&gt; box.plot()</span>
+
+<span class="sd">    &gt;&gt;&gt; # Box plot with notches</span>
+<span class="sd">    &gt;&gt;&gt; box = BoxPlot(data, notch=True)</span>
+<span class="sd">    &gt;&gt;&gt; box.plot()</span>
+
+<span class="sd">    &gt;&gt;&gt; # Horizontal box plot with custom outlier symbols</span>
+<span class="sd">    &gt;&gt;&gt; box = BoxPlot(data, vert=False, sym=&quot;r*&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; box.plot()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">notch</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sym</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">vert</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">whis</span><span class="o">=</span><span class="mf">1.5</span><span class="p">):</span>
@@ -126,14 +146,28 @@
 <div class="viewcode-block" id="BoxPlot.median">
 <a class="viewcode-back" href="../../BoxPlot.html#MatPlus.BoxPlot.BoxPlot.median">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">median</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate median of the data&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the median of the data.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            The median value of the dataset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="BoxPlot.quartiles">
 <a class="viewcode-back" href="../../BoxPlot.html#MatPlus.BoxPlot.BoxPlot.quartiles">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">quartiles</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate first and third quartiles&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the first and third quartiles of the data.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple</span>
+<span class="sd">            A tuple containing (Q1, Q3) values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">q1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
         <span class="n">q3</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">75</span><span class="p">))</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">q3</span><span class="p">)</span></div>
@@ -142,7 +176,14 @@
 <div class="viewcode-block" id="BoxPlot.outliers">
 <a class="viewcode-back" href="../../BoxPlot.html#MatPlus.BoxPlot.BoxPlot.outliers">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">outliers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Identify outliers using whis*IQR rule&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Identify outliers using the whisker*IQR rule.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            A list of data points identified as outliers.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">q1</span><span class="p">,</span> <span class="n">q3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">quartiles</span><span class="p">()</span>
         <span class="n">iqr</span> <span class="o">=</span> <span class="n">q3</span> <span class="o">-</span> <span class="n">q1</span>
         <span class="n">lower_bound</span> <span class="o">=</span> <span class="n">q1</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">whis</span> <span class="o">*</span> <span class="n">iqr</span><span class="p">)</span>
@@ -153,7 +194,18 @@
 <div class="viewcode-block" id="BoxPlot.plot">
 <a class="viewcode-back" href="../../BoxPlot.html#MatPlus.BoxPlot.BoxPlot.plot">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate box plot&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create and display the box plot.</span>
+
+<span class="sd">        This method creates a matplotlib figure and plots the box plot</span>
+<span class="sd">        with the specified properties. It applies settings such as orientation,</span>
+<span class="sd">        notches, and outlier symbols as configured during initialization.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">            The plot is displayed but not returned.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;_mpl-gallery&quot;</span><span class="p">)</span>
         <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 

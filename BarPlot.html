@@ -45,7 +45,10 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Bar Plot</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#MatPlus.BarPlot.BarPlot"><code class="docutils literal notranslate"><span class="pre">BarPlot</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#MatPlus.BarPlot.BarPlot"><code class="docutils literal notranslate"><span class="pre">BarPlot</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#MatPlus.BarPlot.BarPlot.plot"><code class="docutils literal notranslate"><span class="pre">BarPlot.plot()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="BoxPlot.html">Box Plot</a></li>
@@ -83,28 +86,59 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="MatPlus.BarPlot.BarPlot">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MatPlus.BarPlot.</span></span><span class="sig-name descname"><span class="pre">BarPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerlimx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerlimy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upperlimx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upperlimy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MatPlus/BarPlot.html#BarPlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MatPlus.BarPlot.BarPlot" title="Link to this definition"></a></dt>
-<dd><p>A class to create bar plots with optional axis limits and styling.</p>
-<section id="attributes">
-<h2>Attributes:<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
-<dl class="simple">
-<dt>x<span class="classifier">array-like</span></dt><dd><p>The x coordinates of the bars.</p>
-</dd>
-<dt>y<span class="classifier">array-like</span></dt><dd><p>The heights of the bars.</p>
-</dd>
-<dt>lowerlimx<span class="classifier">float, optional</span></dt><dd><p>The lower limit for the x-axis. If None, it is set to 90% of the minimum x value.</p>
-</dd>
-<dt>lowerlimy<span class="classifier">float, optional</span></dt><dd><p>The lower limit for the y-axis. If None, it is set to 90% of the minimum y value.</p>
-</dd>
-<dt>upperlimx<span class="classifier">float, optional</span></dt><dd><p>The upper limit for the x-axis. If None, it is set to 110% of the maximum x value.</p>
-</dd>
-<dt>upperlimy<span class="classifier">float, optional</span></dt><dd><p>The upper limit for the y-axis. If None, it is set to 110% of the maximum y value.</p>
-</dd>
-<dt>wd<span class="classifier">float</span></dt><dd><p>The width of the bars.</p>
-</dd>
-<dt>lw<span class="classifier">float</span></dt><dd><p>The linewidth of the bars.</p>
+<dd><p>A class for creating bar plots with customizable properties.</p>
+<p>The BarPlot class provides a simplified interface for creating bar plots
+with customizable axis limits and bar properties such as width and line weight.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array-like</em>) – The x-coordinates of the bars.</p></li>
+<li><p><strong>y</strong> (<em>array-like</em>) – The heights of the bars.</p></li>
+<li><p><strong>lowerlimx</strong> (<em>float</em><em>, </em><em>optional</em>) – Lower limit of the x-axis. Default is None (auto-determined as 90% of minimum x).</p></li>
+<li><p><strong>lowerlimy</strong> (<em>float</em><em>, </em><em>optional</em>) – Lower limit of the y-axis. Default is None (auto-determined as 90% of minimum y).</p></li>
+<li><p><strong>upperlimx</strong> (<em>float</em><em>, </em><em>optional</em>) – Upper limit of the x-axis. Default is None (auto-determined as 110% of maximum x).</p></li>
+<li><p><strong>upperlimy</strong> (<em>float</em><em>, </em><em>optional</em>) – Upper limit of the y-axis. Default is None (auto-determined as 110% of maximum y).</p></li>
+<li><p><strong>wd</strong> (<em>float</em><em>, </em><em>optional</em>) – The width of the bars. Default is None (uses default width of 1).</p></li>
+<li><p><strong>lw</strong> (<em>float</em><em>, </em><em>optional</em>) – The linewidth of the bar edges. Default is None (uses default linewidth of 1).</p></li>
+</ul>
 </dd>
 </dl>
-</section>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Basic bar plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bar</span> <span class="o">=</span> <span class="n">BarPlot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bar</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Bar plot with custom width and axis limits</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bar</span> <span class="o">=</span> <span class="n">BarPlot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lowerlimx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperlimx</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">wd</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bar</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Bar plot with custom linewidth</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bar</span> <span class="o">=</span> <span class="n">BarPlot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bar</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="MatPlus.BarPlot.BarPlot.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/MatPlus/BarPlot.html#BarPlot.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MatPlus.BarPlot.BarPlot.plot" title="Link to this definition"></a></dt>
+<dd><p>Create and display the bar plot.</p>
+<p>This method creates a matplotlib figure and plots the data
+as bars with the specified properties. It applies all configured
+settings such as bar width, linewidth, and axis limits before
+displaying the plot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The plot is displayed but not returned.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
