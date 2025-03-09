@@ -1,2 +1,2 @@
-include .github/README.md
+include PYPI_README.md
 include LICENSE
