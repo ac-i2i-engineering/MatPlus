@@ -50,3 +50,29 @@ def test_stemplot_empty_data():
     assert plot.upperlimx == 0
     assert plot.lowerlimy == 0
     assert plot.upperlimy == 0
+
+
+def test_stemplot_with_label():
+    x = [1, 2, 3]
+    y = [1, 2, 3]
+    plot = StemPlot(x, y, label="Test Label")
+    assert plot.label == "Test Label"
+
+
+def test_stemplot_custom_stylesWithColors():
+    x = [1, 2, 3]
+    y = [1, 2, 3]
+    plot = StemPlot(x, y, linefmt="g--", markerfmt="ro", basefmt="b-")
+    assert plot.linefmt == "g--"  # green dashed line
+    assert plot.markerfmt == "ro"  # red circle markers
+    assert plot.basefmt == "b-"  # blue solid line
+
+
+def test_stemplote_withEdgeCases():
+    x = [0]
+    y = [0]
+    plot = StemPlot(x, y)
+    assert plot.lowerlimx == 0
+    assert plot.upperlimx == 0
+    assert plot.lowerlimy == 0
+    assert plot.upperlimy == 0
