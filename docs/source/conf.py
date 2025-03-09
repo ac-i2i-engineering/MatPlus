@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.abspath("../../"))
 project = "MatPlus"
 copyright = "2024, Dhyey Mavani, Liam Davis, Ryan Ji, Surya Rao, Weixin Lin"
 author = "Dhyey Mavani, Liam Davis, Ryan Ji, Surya Rao, Weixin Lin"
-release = "0.0.0"
+release = "0.1.4"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
