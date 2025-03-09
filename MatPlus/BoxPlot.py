@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 
 
 class BoxPlot:
@@ -40,7 +41,7 @@ class BoxPlot:
     >>> box.plot()
     """
 
-    def __init__(self, data, notch=False, sym="b", vert=True, whis=1.5):
+    def __init__(self, data, notch=False, sym="b", vert=True, whis=1.5, size=3):
         # Validate data type
         if not isinstance(data, (list, np.ndarray)):
             raise TypeError("Data must be a list or numpy array")
@@ -64,6 +65,7 @@ class BoxPlot:
         self.sym = sym
         self.vert = vert
         self.whis = whis
+        self.size = size
 
     # Rest of the class implementation remains the same
     def median(self):
@@ -119,22 +121,25 @@ class BoxPlot:
             The plot is displayed but not returned.
         """
         plt.style.use("_mpl-gallery")
-        fig, ax = plt.subplots()
+        fig, ax = plt.subplots(figsize=(self.size, self.size))
 
         # Set labels and ticks
-        if self.vert:
-            ax.set_xlabel("Data")
-            ax.set_ylabel("Value")
-            ax.set_xticks([1])
-        else:
-            ax.set_xlabel("Value")
-            ax.set_ylabel("Data")
-            ax.set_yticks([1])
-
-        # Add grid for better readability
-        ax.grid(True, linestyle="--", alpha=0.7)
+        ax.set_xticks([])
+        ax.set_yticks(
+            np.arange(
+                min(self.data),
+                max(self.data) + 1,
+                step=1 + round((math.sqrt(max(self.data)) / (self.size * self.size))),
+            )
+        )
+        ax.boxplot(
+            self.data,
+            notch=self.notch,
+            sym=self.sym,
+            vert=self.vert,
+            whis=self.whis,
+        )
 
         # Adjust layout to prevent label clipping
-        plt.tight_layout()
 
         plt.show()
