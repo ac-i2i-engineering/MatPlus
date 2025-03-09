@@ -4,26 +4,45 @@ import numpy as np
 
 class BarPlot:
     """
-    A class to create bar plots with optional axis limits and styling.
+    A class for creating bar plots with customizable properties.
 
-    Attributes:
+    The BarPlot class provides a simplified interface for creating bar plots
+    with customizable axis limits and bar properties such as width and line weight.
+
+    Parameters
     ----------
     x : array-like
-        The x coordinates of the bars.
+        The x-coordinates of the bars.
     y : array-like
         The heights of the bars.
     lowerlimx : float, optional
-        The lower limit for the x-axis. If None, it is set to 90% of the minimum x value.
+        Lower limit of the x-axis. Default is None (auto-determined as 90% of minimum x).
     lowerlimy : float, optional
-        The lower limit for the y-axis. If None, it is set to 90% of the minimum y value.
+        Lower limit of the y-axis. Default is None (auto-determined as 90% of minimum y).
     upperlimx : float, optional
-        The upper limit for the x-axis. If None, it is set to 110% of the maximum x value.
+        Upper limit of the x-axis. Default is None (auto-determined as 110% of maximum x).
     upperlimy : float, optional
-            The upper limit for the y-axis. If None, it is set to 110% of the maximum y value.
-    wd : float
-        The width of the bars.
-    lw : float
-        The linewidth of the bars.
+        Upper limit of the y-axis. Default is None (auto-determined as 110% of maximum y).
+    wd : float, optional
+        The width of the bars. Default is None (uses default width of 1).
+    lw : float, optional
+        The linewidth of the bar edges. Default is None (uses default linewidth of 1).
+
+    Examples
+    --------
+    >>> # Basic bar plot
+    >>> x = [1, 2, 3, 4, 5]
+    >>> y = [10, 15, 7, 12, 9]
+    >>> bar = BarPlot(x, y)
+    >>> bar.plot()
+
+    >>> # Bar plot with custom width and axis limits
+    >>> bar = BarPlot(x, y, lowerlimx=0, upperlimx=6, wd=0.5)
+    >>> bar.plot()
+
+    >>> # Bar plot with custom linewidth
+    >>> bar = BarPlot(x, y, lw=2)
+    >>> bar.plot()
     """
 
     def __init__(
@@ -37,11 +56,6 @@ class BarPlot:
         wd=None,
         lw=None,
     ):
-        """
-        Constructs all the necessary attributes for the BarPlot object.
-        Plots the bar plot with the given parameters.
-        """
-
         self.x = x
         self.y = y
         self.lowerlimx = lowerlimx
@@ -71,6 +85,19 @@ class BarPlot:
             self.width = 1
 
     def plot(self):
+        """
+        Create and display the bar plot.
+
+        This method creates a matplotlib figure and plots the data
+        as bars with the specified properties. It applies all configured
+        settings such as bar width, linewidth, and axis limits before
+        displaying the plot.
+
+        Returns
+        -------
+        None
+            The plot is displayed but not returned.
+        """
         plt.style.use("_mpl-gallery")
         fig, ax = plt.subplots()
         ax.bar(self.x, self.y, width=self.width, edgecolor="black", linewidth=1)
