@@ -9,7 +9,7 @@ DESCRIPTION = "This package is for easy, convenient plotting in Python."
 LICENSE = "MIT"
 KEYWORDS = "Plotting Python Matplotlib"
 URL = "https://github.com/ac-i2i-engineering/" + NAME
-README = "./github/README.md"
+README = ".github/README.md"
 CLASSIFIERS = [
     "Programming Language :: Cython",
     "Programming Language :: Python",
