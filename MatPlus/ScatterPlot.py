@@ -4,34 +4,51 @@ import numpy as np
 
 class ScatterPlot:
     """
-    A class to create scatter plots with optional axis limits and styling.
+    A class for creating scatter plots with customizable properties.
 
-    Attributes:
+    The ScatterPlot class provides a simplified interface for creating scatter plots
+    with customizable axis limits and point properties such as sizes and colors.
+
+    Parameters
     ----------
-    type : str
-        The type of the plot.
     x : array-like
-        The x coordinates of the data points.
+        The x-coordinates of the data points.
     y : array-like
-        The y coordinates of the data points.
+        The y-coordinates of the data points.
     lowerlimx : float, optional
-        The lower limit for the x-axis. If None, it is set to 90% of the minimum x value.
+        Lower limit of the x-axis. Default is None (auto-determined as 90% of minimum x).
     lowerlimy : float, optional
-        The lower limit for the y-axis. If None, it is set to 90% of the minimum y value.
+        Lower limit of the y-axis. Default is None (auto-determined as 90% of minimum y).
     upperlimx : float, optional
-        The upper limit for the x-axis. If None, it is set to 110% of the maximum x value.
+        Upper limit of the x-axis. Default is None (auto-determined as 110% of maximum x).
     upperlimy : float, optional
-            The upper limit for the y-axis. If None, it is set to 110% of the maximum y value.
-    sizes : array-like
-        The sizes of the data points.
-    colors : array-like
-        The colors of the data points.
-    vmin : float
-        The minimum value of the color map.
-    vmax : float
-        The maximum value of the color map.
-    width : float
-        The width of the plot.
+        Upper limit of the y-axis. Default is None (auto-determined as 110% of maximum y).
+    sizes : array-like, optional
+        The sizes of the data points. Default is empty list (uses default size).
+    colors : array-like, optional
+        The colors of the data points. Default is empty list (uses default color).
+    vmin : float, optional
+        The minimum value for color scaling. Default is 0.
+    vmax : float, optional
+        The maximum value for color scaling. Default is 0.
+    width : float, optional
+        The width of the plot. Default is 1.
+
+    Examples
+    --------
+    >>> # Basic scatter plot
+    >>> x = [1, 2, 3, 4, 5]
+    >>> y = [1, 4, 9, 16, 25]
+    >>> scatter = ScatterPlot(x, y)
+    >>> scatter.plot()
+
+    >>> # Scatter plot with custom point sizes
+    >>> scatter = ScatterPlot(x, y, sizes=[10, 20, 30, 40, 50])
+    >>> scatter.plot()
+
+    >>> # Scatter plot with colored points
+    >>> scatter = ScatterPlot(x, y, colors=[0.1, 0.5, 0.7, 0.9, 1.0], vmin=0, vmax=1)
+    >>> scatter.plot()
     """
 
     def __init__(
@@ -75,8 +92,17 @@ class ScatterPlot:
 
     def plot(self):
         """
-        Constructs all the necessary attributes for the ScatterPlot object.
-        Plots the scatter plot with the given parameters.
+        Create and display the scatter plot.
+
+        This method creates a matplotlib figure and plots the data
+        points provided during initialization with the specified properties.
+        It applies all configured settings such as point sizes, colors,
+        and axis limits before displaying the plot.
+
+        Returns
+        -------
+        None
+            The plot is displayed but not returned.
         """
         # Plots the scatter plot with the given parameters
         fig, ax = plt.subplots()
