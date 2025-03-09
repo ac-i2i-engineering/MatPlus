@@ -13,10 +13,10 @@ package_module_name: MatPlus
 package_name: MatPlus
 package_tagline: An easy, convenient way to plot in Python.
 package_title: MatPlus
-readme: .github/README.md
+readme: PYPI_README.md
 requires: ["matplotlib", "numpy", "pandas"]
 scripts: []
-version: 0.1.4
+version: 0.1.5
 your_author_name: Liam Davis
 your_email_address: davisliam123@gmail.com
 your_full_name: Liam Davis
