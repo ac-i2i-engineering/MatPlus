@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MatPlus.Histogram &mdash; MatPlus 0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=7026087e"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            MatPlus
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../BarPlot.html">Bar Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BoxPlot.html">Box Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Histogram.html">Histogram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../LinePlot.html">Line Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ScatterPlot.html">Scatter Plot</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">MatPlus</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">MatPlus.Histogram</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for MatPlus.Histogram</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+
+<div class="viewcode-block" id="Histogram">
+<a class="viewcode-back" href="../../Histogram.html#MatPlus.Histogram.Histogram">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Histogram</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class for creating histogram plots using matplotlib.</span>
+
+<span class="sd">    The Histogram class provides a simplified interface for creating histogram plots</span>
+<span class="sd">    with customizable bins, density normalization, and colors.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : array-like</span>
+<span class="sd">        The data to be displayed in the histogram.</span>
+<span class="sd">    bins : int or sequence or str, optional</span>
+<span class="sd">        Number of bins, sequence of bin edges, or binning strategy.</span>
+<span class="sd">        Default is 10.</span>
+<span class="sd">    density : bool, optional</span>
+<span class="sd">        If True, the histogram is normalized to form a probability density.</span>
+<span class="sd">        The area under the histogram will sum to 1.</span>
+<span class="sd">        Default is False.</span>
+<span class="sd">    color : str or tuple, optional</span>
+<span class="sd">        Color for all the elements of the histogram. Can be a string</span>
+<span class="sd">        specifying a color name or a RGB tuple.</span>
+<span class="sd">        Default is None (uses matplotlib default color).</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; # Basic histogram with default settings</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; data = np.random.normal(0, 1, 1000)</span>
+<span class="sd">    &gt;&gt;&gt; hist = Histogram(data)</span>
+<span class="sd">    &gt;&gt;&gt; hist.plot()</span>
+
+<span class="sd">    &gt;&gt;&gt; # Custom histogram with specific bins and normalization</span>
+<span class="sd">    &gt;&gt;&gt; data = [1, 2, 2, 3, 3, 3, 4, 5, 5]</span>
+<span class="sd">    &gt;&gt;&gt; hist = Histogram(data, bins=5, density=True, color=&#39;blue&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; hist.plot()</span>
+
+<span class="sd">    &gt;&gt;&gt; # Histogram with custom bin edges</span>
+<span class="sd">    &gt;&gt;&gt; hist = Histogram(data, bins=[0, 2, 3, 6], color=&#39;green&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; hist.plot()</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">density</span> <span class="o">=</span> <span class="n">density</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+
+<div class="viewcode-block" id="Histogram.plot">
+<a class="viewcode-back" href="../../Histogram.html#MatPlus.Histogram.Histogram.plot">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create and display a histogram.</span>
+
+<span class="sd">        This method creates a matplotlib figure and plots the histogram</span>
+<span class="sd">        using the data and parameters provided during initialization.</span>
+<span class="sd">        The histogram is displayed using matplotlib&#39;s plt.show() function.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">            The plot is displayed but not returned.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">density</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Dhyey Mavani, Liam Davis, Ryan Ji, Surya Rao, Weixin Lin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

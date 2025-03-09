@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MatPlus.LinePlot &mdash; MatPlus 0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=7026087e"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            MatPlus
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../BarPlot.html">Bar Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BoxPlot.html">Box Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Histogram.html">Histogram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../LinePlot.html">Line Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ScatterPlot.html">Scatter Plot</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">MatPlus</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">MatPlus.LinePlot</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for MatPlus.LinePlot</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;_mpl-gallery&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="LinePlot">
+<a class="viewcode-back" href="../../LinePlot.html#MatPlus.LinePlot.LinePlot">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">LinePlot</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class for creating line plots using matplotlib.</span>
+
+<span class="sd">    The LinePlot class provides a simplified interface for creating line plots</span>
+<span class="sd">    with customizable axis limits and line properties. It supports plotting</span>
+<span class="sd">    multiple lines on the same figure.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : list or list of lists</span>
+<span class="sd">        The x-coordinates of the line(s). For multiple lines, provide a list of lists.</span>
+<span class="sd">    y : list or list of lists</span>
+<span class="sd">        The y-coordinates of the line(s). For multiple lines, provide a list of lists.</span>
+<span class="sd">    lowerlimx : float, optional</span>
+<span class="sd">        Lower limit of the x-axis. Default is None (auto-determined).</span>
+<span class="sd">    lowerlimy : float, optional</span>
+<span class="sd">        Lower limit of the y-axis. Default is None (auto-determined).</span>
+<span class="sd">    upperlimx : float, optional</span>
+<span class="sd">        Upper limit of the x-axis. Default is None (auto-determined).</span>
+<span class="sd">    upperlimy : float, optional</span>
+<span class="sd">        Upper limit of the y-axis. Default is None (auto-determined).</span>
+<span class="sd">    lw : float, optional</span>
+<span class="sd">        Line width for the plot. Default is None (uses matplotlib default).</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; # Single line plot</span>
+<span class="sd">    &gt;&gt;&gt; x = [1, 2, 3, 4, 5]</span>
+<span class="sd">    &gt;&gt;&gt; y = [1, 4, 9, 16, 25]</span>
+<span class="sd">    &gt;&gt;&gt; line_plot = LinePlot(x, y)</span>
+<span class="sd">    &gt;&gt;&gt; line_plot.plot()</span>
+
+<span class="sd">    &gt;&gt;&gt; # Multiple line plot</span>
+<span class="sd">    &gt;&gt;&gt; x = [[1, 2, 3], [1, 2, 3, 4]]</span>
+<span class="sd">    &gt;&gt;&gt; y = [[1, 2, 3], [4, 3, 2, 1]]</span>
+<span class="sd">    &gt;&gt;&gt; line_plot = LinePlot(x, y, lowerlimx=0, upperlimx=5)</span>
+<span class="sd">    &gt;&gt;&gt; line_plot.plot()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">x</span><span class="p">,</span>
+        <span class="n">y</span><span class="p">,</span>
+        <span class="n">lowerlimx</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">lowerlimy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">upperlimx</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">upperlimy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">lw</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lowerlimx</span> <span class="o">=</span> <span class="n">lowerlimx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lowerlimy</span> <span class="o">=</span> <span class="n">lowerlimy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">upperlimx</span> <span class="o">=</span> <span class="n">upperlimx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">upperlimy</span> <span class="o">=</span> <span class="n">upperlimy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linewidth</span> <span class="o">=</span> <span class="n">lw</span>
+
+<div class="viewcode-block" id="LinePlot.plot">
+<a class="viewcode-back" href="../../LinePlot.html#MatPlus.LinePlot.LinePlot.plot">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create and display a line plot.</span>
+
+<span class="sd">        This method creates a matplotlib figure and plots the data</span>
+<span class="sd">        provided during initialization. If multiple lines were provided,</span>
+<span class="sd">        all lines will be displayed on the same plot.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">            The plot is displayed but not returned.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">):</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">linewidth</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lowerlimx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">upperlimx</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lowerlimy</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">upperlimy</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Dhyey Mavani, Liam Davis, Ryan Ji, Surya Rao, Weixin Lin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
