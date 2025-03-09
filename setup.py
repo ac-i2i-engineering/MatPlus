@@ -3,13 +3,13 @@ import re
 import setuptools
 
 NAME = "MatPlus"
-AUTHOR = "Liam Davis"
+AUTHOR = "Dhyey Mavani, Liam Davis, Ryan Ji, Surya Rao, Weixin Lin"
 AUTHOR_EMAIL = "davisliam123@gmail.com"
 DESCRIPTION = "This package is for easy, convenient plotting in Python."
 LICENSE = "MIT"
 KEYWORDS = "Plotting Python Matplotlib"
 URL = "https://github.com/ac-i2i-engineering/" + NAME
-README = "README.md"
+README = "./github/README.md"
 CLASSIFIERS = [
     "Programming Language :: Cython",
     "Programming Language :: Python",
