@@ -19,6 +19,7 @@ class BoxPlot:
     whis : float, optional
         The length of the whiskers as a multiple of the interquartile range (IQR). Default is 1.5.
     """
+
     def __init__(self, data, notch=False, sym="b", vert=True, whis=1.5):
         # Validate data type
         if not isinstance(data, (list, np.ndarray)):

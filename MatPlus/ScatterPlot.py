@@ -33,6 +33,7 @@ class ScatterPlot:
     width : float
         The width of the plot.
     """
+
     def __init__(
         self,
         x,
@@ -47,7 +48,6 @@ class ScatterPlot:
         vmax=0,
         width=1,
     ):
-
         self.type = type
         self.x = x
         self.y = y
