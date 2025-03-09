@@ -2,6 +2,7 @@ matplotlib
 numpy
 pandas
 pytest
+pytest-cov
 coverage
 black
 pre-commit

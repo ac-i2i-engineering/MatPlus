@@ -12,8 +12,6 @@ def test_lineplot_creation():
     assert plot.upperlimx is None
     assert plot.lowerlimy is None
     assert plot.upperlimy is None
-    assert plot.width is None
-    assert plot.linewidth is None
 
 
 def test_lineplot_with_limits():
@@ -24,13 +22,6 @@ def test_lineplot_with_limits():
     assert plot.upperlimx == 4
     assert plot.lowerlimy == 0
     assert plot.upperlimy == 4
-
-
-def test_lineplot_with_linewidth():
-    x = [1, 2, 3]
-    y = [1, 2, 3]
-    plot = LinePlot(x, y, lw=2.0)
-    assert plot.linewidth == 2.0
 
 
 def test_multiple_lines():

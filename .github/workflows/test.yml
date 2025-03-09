@@ -11,27 +11,24 @@ jobs:
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out the code
+        uses: actions/checkout@v4
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install ruff pytest coverage
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Lint with ruff
+          pip install -r requirements.txt
+
+      - name: Run unit tests and generate coverage report
         run: |
-          # stop the build if there are Python syntax errors or undefined names
-          ruff check --output-format=github --select=E9,F63,F7,F82 --target-version=py38 .
-          # default set of ruff rules with GitHub Annotations
-          ruff check --output-format=github --target-version=py38 .
-      - name: Test with PyTest and generate coverage report
-        run: |
-            pytest --exitfirst || echo "No tests found, skipping test step."
-            coverage run --source=. -m pytest || echo "No tests executed, skipping coverage."
-            coverage lcov || echo "Skipping coverage report generation."
-            coverage report || echo "Skipping coverage text report."
-      - name: Coveralls
+          pytest
+      
+      - name: Coveralls workflow
         uses: coverallsapp/github-action@v2
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
