@@ -3,6 +3,36 @@ import numpy as np
 
 
 class ScatterPlot:
+    """
+    A class to create scatter plots with optional axis limits and styling.
+
+    Attributes:
+    ----------
+    type : str
+        The type of the plot.
+    x : array-like
+        The x coordinates of the data points.
+    y : array-like
+        The y coordinates of the data points.
+    lowerlimx : float, optional
+        The lower limit for the x-axis. If None, it is set to 90% of the minimum x value.
+    lowerlimy : float, optional
+        The lower limit for the y-axis. If None, it is set to 90% of the minimum y value.
+    upperlimx : float, optional
+        The upper limit for the x-axis. If None, it is set to 110% of the maximum x value.
+    upperlimy : float, optional
+            The upper limit for the y-axis. If None, it is set to 110% of the maximum y value.
+    sizes : array-like
+        The sizes of the data points.
+    colors : array-like
+        The colors of the data points.
+    vmin : float
+        The minimum value of the color map.
+    vmax : float
+        The maximum value of the color map.
+    width : float
+        The width of the plot.
+    """
     def __init__(
         self,
         x,
@@ -17,36 +47,6 @@ class ScatterPlot:
         vmax=0,
         width=1,
     ):
-        """
-        A class to create scatter plots with optional axis limits and styling.
-
-        Attributes:
-        ----------
-        type : str
-            The type of the plot.
-        x : array-like
-            The x coordinates of the data points.
-        y : array-like
-            The y coordinates of the data points.
-        lowerlimx : float, optional
-            The lower limit for the x-axis. If None, it is set to 90% of the minimum x value.
-        lowerlimy : float, optional
-            The lower limit for the y-axis. If None, it is set to 90% of the minimum y value.
-        upperlimx : float, optional
-            The upper limit for the x-axis. If None, it is set to 110% of the maximum x value.
-        upperlimy : float, optional
-                The upper limit for the y-axis. If None, it is set to 110% of the maximum y value.
-        sizes : array-like
-            The sizes of the data points.
-        colors : array-like
-            The colors of the data points.
-        vmin : float
-            The minimum value of the color map.
-        vmax : float
-            The maximum value of the color map.
-        width : float
-            The width of the plot.
-        """
 
         self.type = type
         self.x = x
