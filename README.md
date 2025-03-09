@@ -85,6 +85,9 @@ hist.plot()
 ## Documentation
 For detailed API documentation, visit our [documentation site](https://ac-i2i-engineering.github.io/MatPlus/).
 
+## Examples
+For detailed examples of MatPlus usage in jupyter notebooks, please refer to the [examples in our GitHub](https://github.com/ac-i2i-engineering/MatPlus/tree/main/examples)
+
 ## Contributing
 Contributions are welcome, whether it is building new plots, fixing bugs, or writing documentation. Here's how to get started:
 
