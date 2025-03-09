@@ -2,7 +2,7 @@ import numpy as np
 from MatPlus.StemPlot import StemPlot
 
 
-def test_stemplot_initialization():
+def test_stemplot_default():
     x = [1, 2, 3]
     y = [1, 2, 3]
     plot = StemPlot(x, y)
