@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 
 
 class BoxPlot:
@@ -23,6 +24,10 @@ class BoxPlot:
     whis : float, optional
         The length of the whiskers as a multiple of the interquartile range (IQR).
         Default is 1.5.
+    width : float, optional
+        The width of the plot. Default is 3. Effects auto ticks.
+    height : float, optional
+        The height of the plot. Default is 3. Effects auto ticks.
 
     Examples
     --------
@@ -40,7 +45,9 @@ class BoxPlot:
     >>> box.plot()
     """
 
-    def __init__(self, data, notch=False, sym="b", vert=True, whis=1.5):
+    def __init__(
+        self, data, notch=False, sym="b", vert=True, whis=1.5, width=3, height=3
+    ):
         # Validate data type
         if not isinstance(data, (list, np.ndarray)):
             raise TypeError("Data must be a list or numpy array")
@@ -64,6 +71,8 @@ class BoxPlot:
         self.sym = sym
         self.vert = vert
         self.whis = whis
+        self.width = width
+        self.height = height
 
     # Rest of the class implementation remains the same
     def median(self):
@@ -119,22 +128,48 @@ class BoxPlot:
             The plot is displayed but not returned.
         """
         plt.style.use("_mpl-gallery")
-        fig, ax = plt.subplots()
+        fig, ax = plt.subplots(figsize=(self.width, self.height))
 
         # Set labels and ticks
+        ax.set_xticks([])
         if self.vert:
-            ax.set_xlabel("Data")
-            ax.set_ylabel("Value")
-            ax.set_xticks([1])
+            ax.set_yticks(
+                np.arange(
+                    min(self.data),
+                    max(self.data) + 1,
+                    step=1
+                    + round(
+                        1.5
+                        * (
+                            math.sqrt(max(self.data) - min(self.data))
+                            / (self.height * self.height)
+                        )
+                    ),
+                )
+            )
         else:
-            ax.set_xlabel("Value")
-            ax.set_ylabel("Data")
-            ax.set_yticks([1])
-
-        # Add grid for better readability
-        ax.grid(True, linestyle="--", alpha=0.7)
+            ax.set_xticks(
+                np.arange(
+                    min(self.data),
+                    max(self.data) + 1,
+                    step=1
+                    + round(
+                        3.5
+                        * (
+                            math.sqrt(max(self.data) - min(self.data))
+                            / (self.width * self.width)
+                        )
+                    ),
+                )
+            )
+        ax.boxplot(
+            self.data,
+            notch=self.notch,
+            sym=self.sym,
+            vert=self.vert,
+            whis=self.whis,
+        )
 
         # Adjust layout to prevent label clipping
-        plt.tight_layout()
 
         plt.show()
