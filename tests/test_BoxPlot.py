@@ -107,13 +107,14 @@ def test_single_value_data():
 
 def test_boxplot_size():
     data = [1, 2, 3, 4, 5]
-    boxplot = BoxPlot(data, size=5)
-    assert boxplot.size == 5
+    boxplot = BoxPlot(data, width=5)
+    assert boxplot.width == 5
 
     # Test with different size
-    boxplot = BoxPlot(data, size=10)
-    assert boxplot.size == 10
+    boxplot = BoxPlot(data, height=10)
+    assert boxplot.height == 10
 
     # Test default size
     boxplot = BoxPlot(data)
-    assert boxplot.size == 3
+    assert boxplot.height == 3
+    assert boxplot.width == 3
