@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 from MatPlus.LinePlot import LinePlot
+import numpy as np
 
 
 def test_lineplot_creation():
@@ -46,3 +47,14 @@ def test_plot_with_parameters():
     plot = LinePlot(x, y, lowerlimx=0, upperlimx=4, lowerlimy=0, upperlimy=4, lw=2.0)
     plot.plot()
     plt.close()  # Cleanup
+
+
+def test_multiplot():
+    x1 = np.linspace(0, 10, 100)
+    y1 = np.sin(x1)
+    x2 = np.linspace(0, 10, 100)
+    y2 = np.cos(x2)
+
+    # Multiple line plot
+    line = LinePlot([x1, x2], [y1, y2])
+    line.plot()
