@@ -30,9 +30,9 @@ class LinePlot:
     lw : float, optional
         Line width for the plot. Default is None (uses matplotlib default).
     width: float, optional
-        The width of the plot. Default is 3.
+        The width of the plot in inches. Default is 3.
     height: float, optional
-        The height of the plot. Default is 3.
+        The height of the plot in inche. Default is 3.
 
     Examples
     --------
@@ -86,8 +86,10 @@ class LinePlot:
         """
         plt.figure(figsize=(self.width, self.height))
 
-        if (isinstance(self.x, np.ndarray) or isinstance(self.x, list)) and (
-            isinstance(self.x[0], np.ndarray) or isinstance(self.x[0], list)
+        if (
+            (isinstance(self.x, np.ndarray) or isinstance(self.x, list))
+            and (isinstance(self.x[0], np.ndarray) or isinstance(self.x[0], list))
+            and (isinstance(self.y[0], np.ndarray) or isinstance(self.y[0], list))
         ):
             for x_data, y_data in zip(self.x, self.y):
                 plt.plot(x_data, y_data, linewidth=self.linewidth)
