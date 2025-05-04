@@ -43,11 +43,27 @@ class Histogram:
 
     """
 
-    def __init__(self, data, bins=10, density=False, color=None):
+    def __init__(
+        self,
+        data,
+        bins=10,
+        density=False,
+        color=None,
+        width=3,
+        height=3,
+        title=None,
+        xlabel=None,
+        ylabel=None,
+    ):
         self.data = data
         self.bins = bins
         self.density = density
         self.color = color
+        self.width = width
+        self.height = height
+        self.title = title
+        self.xlabel = xlabel
+        self.ylabel = ylabel
 
     def plot(self):
         """
@@ -63,5 +79,9 @@ class Histogram:
             The plot is displayed but not returned.
 
         """
+        plt.figure(figsize=(self.width, self.height))
+        plt.title(self.title)
+        plt.xlabel(self.xlabel)
+        plt.ylabel(self.ylabel)
         plt.hist(self.data, bins=self.bins, density=self.density, color=self.color)
         plt.show()
