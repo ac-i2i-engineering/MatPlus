@@ -14,8 +14,7 @@ class StemPlot:
         linefmt="-",
         markerfmt="o",
         basefmt=" ",
-        label=None,
-        use_line_collection=True,
+        label=None,  # Keep for backward compatibility but it won't be used
         orientation="vertical",
     ):
         """
@@ -41,8 +40,6 @@ class StemPlot:
             A string defining the properties of the baseline.
         label : str, optional
             The label for the stem plot.
-        use_line_collection : bool, optional
-            Whether to use a LineCollection to draw the stems.
         orientation : str, optional
             The orientation of the stem plot, either 'vertical' or 'horizontal'.
         """
@@ -57,7 +54,6 @@ class StemPlot:
         self.markerfmt = markerfmt
         self.basefmt = basefmt
         self.label = label
-        self.use_line_collection = use_line_collection
         self.orientation = orientation
 
         # Set default axis limits if not provided
@@ -88,7 +84,6 @@ class StemPlot:
                 markerfmt=self.markerfmt,
                 basefmt=self.basefmt,
                 label=self.label,
-                use_line_collection=self.use_line_collection,
             )
             ax.set_xlim(self.lowerlimx, self.upperlimx)
             ax.set_ylim(self.lowerlimy, self.upperlimy)
@@ -100,7 +95,6 @@ class StemPlot:
                 markerfmt=self.markerfmt,
                 basefmt=self.basefmt,
                 label=self.label,
-                use_line_collection=self.use_line_collection,
             )
             ax.set_ylim(self.lowerlimx, self.upperlimx)
             ax.set_xlim(self.lowerlimy, self.upperlimy)

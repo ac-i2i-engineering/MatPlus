@@ -6,3 +6,4 @@ omit =
 [report]
 # Display missing lines in the terminal output
 show_missing = True
+fail_under = 95

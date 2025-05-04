@@ -62,7 +62,6 @@ def test_stemplot_empty_data():
     assert plot.upperlimx == 0
     assert plot.lowerlimy == 0
     assert plot.upperlimy == 0
-    # plot.plot()
 
 
 def test_stemplot_single_element():
@@ -102,12 +101,4 @@ def test_stemplot_with_edge_cases():
     assert plot.upperlimx == 0
     assert plot.lowerlimy == 0
     assert plot.upperlimy == 0
-    plot.plot()
-
-
-def test_stemplot_without_line_collection():
-    x = [1, 2, 3]
-    y = [3, 2, 3]
-    plot = StemPlot(x, y, use_line_collection=False)
-    assert not plot.use_line_collection
     plot.plot()
