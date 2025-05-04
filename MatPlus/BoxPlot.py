@@ -28,6 +28,12 @@ class BoxPlot:
         The width of the plot. Default is 3. Effects auto ticks.
     height : float, optional
         The height of the plot. Default is 3. Effects auto ticks.
+    title : str, optional
+        The title of the plot. Default is None.
+    xlabel : str, optional
+        The x-axis label. Default is None.
+    ylabel : str, optional
+        The y-axis label. Default is None.
 
     Examples
     --------
@@ -46,7 +52,17 @@ class BoxPlot:
     """
 
     def __init__(
-        self, data, notch=False, sym="b", vert=True, whis=1.5, width=3, height=3
+        self,
+        data,
+        notch=False,
+        sym="b",
+        vert=True,
+        whis=1.5,
+        width=3,
+        height=3,
+        title=None,
+        xlabel=None,
+        ylabel=None,
     ):
         # Validate data type
         if not isinstance(data, (list, np.ndarray)):
@@ -73,6 +89,9 @@ class BoxPlot:
         self.whis = whis
         self.width = width
         self.height = height
+        self.title = title
+        self.xlabel = xlabel
+        self.ylabel = ylabel
 
     # Rest of the class implementation remains the same
     def median(self):
@@ -129,6 +148,9 @@ class BoxPlot:
         """
         plt.style.use("_mpl-gallery")
         fig, ax = plt.subplots(figsize=(self.width, self.height))
+        plt.title(self.title)
+        plt.xlabel(self.xlabel)
+        plt.ylabel(self.ylabel)
 
         # Set labels and ticks
         ax.set_xticks([])
