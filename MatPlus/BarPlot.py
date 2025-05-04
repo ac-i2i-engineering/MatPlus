@@ -28,7 +28,7 @@ class BarPlot:
         The width of the bars. Default is None (uses default width of 1).
     lw : float, optional
         The linewidth of the bar edges. Default is None (uses default linewidth of 1).
-    xlable : str, optional
+    xlabel : str, optional
         The x-axis label. Default is None.
     ylabel : str, optional
         The y-axis label. Default is None.
@@ -120,21 +120,10 @@ class BarPlot:
         plt.title(self.title)
         plt.xlabel(self.xlabel)
         plt.ylabel(self.ylabel)
-        ax.bar(self.x, self.y, width=self.wd, edgecolor="black", linewidth=1)
+        ax.bar(self.x, self.y, width=self.wd, edgecolor="black", linewidth=self.lw)
         ax.set(
             xlim=(self.lowerlimx, self.upperlimx),
-            xticks=np.arange(
-                self.lowerlimx + 1,
-                self.upperlimx,
-                step=1
-                + round(
-                    2
-                    * (
-                        math.sqrt(self.upperlimx - self.lowerlimx)
-                        / (self.width * self.width)
-                    )
-                ),
-            ),
+            xticks=np.linspace(self.lowerlimx, self.upperlimx, min(10, len(self.x))),
             ylim=(self.lowerlimy, self.upperlimy),
             yticks=np.arange(
                 self.lowerlimy + 1,
