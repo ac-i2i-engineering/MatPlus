@@ -14,6 +14,7 @@ def test_stemplot_default():
     assert plot.markerfmt == "o"
     assert plot.basefmt == " "
     assert plot.orientation == "vertical"
+    plot.plot()
 
 
 def test_stemplot_with_limits():
@@ -24,22 +25,33 @@ def test_stemplot_with_limits():
     assert plot.upperlimx == 4
     assert plot.lowerlimy == 0
     assert plot.upperlimy == 4
+    plot.plot()
 
 
-def test_stemplot_with_orientation():
+def test_stemplot_horizontal_orientation():
     x = [1, 2, 3]
     y = [1, 2, 3]
     plot = StemPlot(x, y, orientation="horizontal")
     assert plot.orientation == "horizontal"
+    plot.plot()
 
 
-def test_stemplot_with_custom_styles():
+def test_stemplot_vertical_orientation():
     x = [1, 2, 3]
     y = [1, 2, 3]
-    plot = StemPlot(x, y, linefmt="--", markerfmt="s", basefmt="r")
-    assert plot.linefmt == "--"
-    assert plot.markerfmt == "s"
-    assert plot.basefmt == "r"
+    plot = StemPlot(x, y, orientation="vertical")
+    assert plot.orientation == "vertical"
+    plot.plot()
+
+
+def test_stemplot_custom_styles():
+    x = [1, 2, 3]
+    y = [1, 2, 3]
+    plot = StemPlot(x, y, linefmt="r-", markerfmt="bs", basefmt="g-")
+    assert plot.linefmt == "r-"
+    assert plot.markerfmt == "bs"
+    assert plot.basefmt == "g-"
+    plot.plot()
 
 
 def test_stemplot_empty_data():
@@ -50,13 +62,26 @@ def test_stemplot_empty_data():
     assert plot.upperlimx == 0
     assert plot.lowerlimy == 0
     assert plot.upperlimy == 0
+    # plot.plot()
+
+
+def test_stemplot_single_element():
+    x = [1]
+    y = [1]
+    plot = StemPlot(x, y)
+    assert plot.lowerlimx == 0.9
+    assert plot.upperlimx == 1.1
+    assert plot.lowerlimy == 0.9
+    assert plot.upperlimy == 1.1
+    plot.plot()
 
 
 def test_stemplot_with_label():
-    x = [1, 2, 3]
-    y = [1, 2, 3]
+    x = [1, 2, 3, 4]
+    y = [1, 2, 3, 4]
     plot = StemPlot(x, y, label="Test Label")
     assert plot.label == "Test Label"
+    plot.plot()
 
 
 def test_stemplot_custom_stylesWithColors():
@@ -66,9 +91,10 @@ def test_stemplot_custom_stylesWithColors():
     assert plot.linefmt == "g--"  # green dashed line
     assert plot.markerfmt == "ro"  # red circle markers
     assert plot.basefmt == "b-"  # blue solid line
+    plot.plot()
 
 
-def test_stemplote_withEdgeCases():
+def test_stemplot_with_edge_cases():
     x = [0]
     y = [0]
     plot = StemPlot(x, y)
@@ -76,3 +102,12 @@ def test_stemplote_withEdgeCases():
     assert plot.upperlimx == 0
     assert plot.lowerlimy == 0
     assert plot.upperlimy == 0
+    plot.plot()
+
+
+def test_stemplot_without_line_collection():
+    x = [1, 2, 3]
+    y = [3, 2, 3]
+    plot = StemPlot(x, y, use_line_collection=False)
+    assert not plot.use_line_collection
+    plot.plot()
