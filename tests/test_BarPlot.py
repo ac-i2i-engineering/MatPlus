@@ -13,8 +13,8 @@ def test_barplot_initialization():
     assert barplot.lowerlimy == np.min(y) * 0.9
     assert barplot.upperlimx == np.max(x) * 1.1
     assert barplot.upperlimy == np.max(y) * 1.1
-    assert barplot.wd == 1
-    assert barplot.lw == 1
+    assert barplot.barwidth == 1
+    assert barplot.linewidth == 1
 
 
 def test_barplot_custom_limits():
@@ -31,10 +31,10 @@ def test_barplot_custom_limits():
 def test_barplot_custom_width_linewidth():
     x = np.array([1, 2, 3])
     y = np.array([4, 5, 6])
-    barplot = BarPlot(x, y, wd=0.5, lw=2)
+    barplot = BarPlot(x, y, barwidth=0.5, linewidth=2)
 
-    assert barplot.wd == 0.5
-    assert barplot.lw == 2
+    assert barplot.barwidth == 0.5
+    assert barplot.linewidth == 2
 
 
 def test_barplot_plot():

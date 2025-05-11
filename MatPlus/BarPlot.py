@@ -24,9 +24,9 @@ class BarPlot:
         Upper limit of the x-axis. Default is None (auto-determined as 110% of maximum x).
     upperlimy : float, optional
         Upper limit of the y-axis. Default is None (auto-determined as 110% of maximum y).
-    wd : float, optional
+    barwidth : float, optional
         The width of the bars. Default is None (uses default width of 1).
-    lw : float, optional
+    linewidth : float, optional
         The linewidth of the bar edges. Default is None (uses default linewidth of 1).
     xlabel : str, optional
         The x-axis label. Default is None.
@@ -44,11 +44,11 @@ class BarPlot:
     >>> bar.plot()
 
     >>> # Bar plot with custom width and axis limits
-    >>> bar = BarPlot(x, y, lowerlimx=0, upperlimx=6, wd=0.5)
+    >>> bar = BarPlot(x, y, lowerlimx=0, upperlimx=6, barwidth=0.5)
     >>> bar.plot()
 
     >>> # Bar plot with custom linewidth
-    >>> bar = BarPlot(x, y, lw=2)
+    >>> bar = BarPlot(x, y, linewidth=2)
     >>> bar.plot()
     """
 
@@ -60,8 +60,8 @@ class BarPlot:
         lowerlimy=None,
         upperlimx=None,
         upperlimy=None,
-        wd=None,
-        lw=None,
+        barwidth=None,
+        linewidth=None,
         xlabel=None,
         ylabel=None,
         title=None,
@@ -92,14 +92,14 @@ class BarPlot:
         if self.upperlimy is None:
             self.upperlimy = np.max(y) * 1.1
 
-        self.wd = wd
-        self.lw = lw
+        self.barwidth = barwidth
+        self.linewidth = linewidth
 
         # Set default width and linewidth if not provided
-        if self.lw is None:
-            self.lw = 1
-        if self.wd is None:
-            self.wd = 1
+        if self.linewidth is None:
+            self.linewidth = 1
+        if self.barwidth is None:
+            self.barwidth = 1
 
     def plot(self):
         """
@@ -120,7 +120,13 @@ class BarPlot:
         plt.title(self.title)
         plt.xlabel(self.xlabel)
         plt.ylabel(self.ylabel)
-        ax.bar(self.x, self.y, width=self.wd, edgecolor="black", linewidth=self.lw)
+        ax.bar(
+            self.x,
+            self.y,
+            width=self.barwidth,
+            edgecolor="black",
+            linewidth=self.linewidth,
+        )
         ax.set(
             xlim=(self.lowerlimx, self.upperlimx),
             xticks=np.linspace(self.lowerlimx, self.upperlimx, min(10, len(self.x))),
