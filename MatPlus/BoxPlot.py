@@ -17,17 +17,23 @@ class BoxPlot:
     notch : bool, optional
         Whether to draw a notch to indicate the confidence interval around the median.
         Default is False.
-    sym : str, optional
+    symbol : str, optional
         The symbol for outliers. Default is "b".
     vert : bool, optional
         Whether to draw the box plot vertically. Default is True.
-    whis : float, optional
+    whisker_length : float, optional
         The length of the whiskers as a multiple of the interquartile range (IQR).
         Default is 1.5.
     width : float, optional
         The width of the plot. Default is 3. Effects auto ticks.
     height : float, optional
         The height of the plot. Default is 3. Effects auto ticks.
+    title : str, optional
+        The title of the plot. Default is None.
+    xlabel : str, optional
+        The x-axis label. Default is None.
+    ylabel : str, optional
+        The y-axis label. Default is None.
 
     Examples
     --------
@@ -41,12 +47,22 @@ class BoxPlot:
     >>> box.plot()
 
     >>> # Horizontal box plot with custom outlier symbols
-    >>> box = BoxPlot(data, vert=False, sym="r*")
+    >>> box = BoxPlot(data, vert=False, symbol="r*")
     >>> box.plot()
     """
 
     def __init__(
-        self, data, notch=False, sym="b", vert=True, whis=1.5, width=3, height=3
+        self,
+        data,
+        notch=False,
+        symbol="b",
+        vert=True,
+        whisker_length=1.5,
+        width=3,
+        height=3,
+        title=None,
+        xlabel=None,
+        ylabel=None,
     ):
         # Validate data type
         if not isinstance(data, (list, np.ndarray)):
@@ -62,17 +78,20 @@ class BoxPlot:
         if not data or len(data) == 0:
             raise ValueError("Data array cannot be empty")
 
-        # Validate whis parameter
-        if whis <= 0:
+        # Validate whisker_length parameter
+        if whisker_length <= 0:
             raise ValueError("Whisker length must be positive")
 
         self.data = numeric_data
         self.notch = notch
-        self.sym = sym
+        self.symbol = symbol
         self.vert = vert
-        self.whis = whis
+        self.whisker_length = whisker_length
         self.width = width
         self.height = height
+        self.title = title
+        self.xlabel = xlabel
+        self.ylabel = ylabel
 
     # Rest of the class implementation remains the same
     def median(self):
@@ -110,8 +129,8 @@ class BoxPlot:
         """
         q1, q3 = self.quartiles()
         iqr = q3 - q1
-        lower_bound = q1 - (self.whis * iqr)
-        upper_bound = q3 + (self.whis * iqr)
+        lower_bound = q1 - (self.whisker_length * iqr)
+        upper_bound = q3 + (self.whisker_length * iqr)
         return [x for x in self.data if x < lower_bound or x > upper_bound]
 
     def plot(self):
@@ -129,6 +148,9 @@ class BoxPlot:
         """
         plt.style.use("_mpl-gallery")
         fig, ax = plt.subplots(figsize=(self.width, self.height))
+        plt.title(self.title)
+        plt.xlabel(self.xlabel)
+        plt.ylabel(self.ylabel)
 
         # Set labels and ticks
         ax.set_xticks([])
@@ -165,9 +187,9 @@ class BoxPlot:
         ax.boxplot(
             self.data,
             notch=self.notch,
-            sym=self.sym,
+            sym=self.symbol,
             vert=self.vert,
-            whis=self.whis,
+            whis=self.whisker_length,
         )
 
         # Adjust layout to prevent label clipping

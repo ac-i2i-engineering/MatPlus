@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 
 
 class BarPlot:
@@ -23,10 +24,16 @@ class BarPlot:
         Upper limit of the x-axis. Default is None (auto-determined as 110% of maximum x).
     upperlimy : float, optional
         Upper limit of the y-axis. Default is None (auto-determined as 110% of maximum y).
-    wd : float, optional
+    barwidth : float, optional
         The width of the bars. Default is None (uses default width of 1).
-    lw : float, optional
+    linewidth : float, optional
         The linewidth of the bar edges. Default is None (uses default linewidth of 1).
+    xlabel : str, optional
+        The x-axis label. Default is None.
+    ylabel : str, optional
+        The y-axis label. Default is None.
+    title : str, optional
+        The title of the plot. Default is None.
 
     Examples
     --------
@@ -37,11 +44,11 @@ class BarPlot:
     >>> bar.plot()
 
     >>> # Bar plot with custom width and axis limits
-    >>> bar = BarPlot(x, y, lowerlimx=0, upperlimx=6, wd=0.5)
+    >>> bar = BarPlot(x, y, lowerlimx=0, upperlimx=6, barwidth=0.5)
     >>> bar.plot()
 
     >>> # Bar plot with custom linewidth
-    >>> bar = BarPlot(x, y, lw=2)
+    >>> bar = BarPlot(x, y, linewidth=2)
     >>> bar.plot()
     """
 
@@ -53,8 +60,13 @@ class BarPlot:
         lowerlimy=None,
         upperlimx=None,
         upperlimy=None,
-        wd=None,
-        lw=None,
+        barwidth=None,
+        linewidth=None,
+        xlabel=None,
+        ylabel=None,
+        title=None,
+        height=3,
+        width=3,
     ):
         self.x = x
         self.y = y
@@ -62,6 +74,11 @@ class BarPlot:
         self.lowerlimy = lowerlimy
         self.upperlimx = upperlimx
         self.upperlimy = upperlimy
+        self.title = title
+        self.ylabel = ylabel
+        self.xlabel = xlabel
+        self.width = width
+        self.height = height
 
         # Set default axis limits if not provided
         # Lower limit for x-axis/y-axis
@@ -75,14 +92,14 @@ class BarPlot:
         if self.upperlimy is None:
             self.upperlimy = np.max(y) * 1.1
 
-        self.width = wd
-        self.linewidth = lw
+        self.barwidth = barwidth
+        self.linewidth = linewidth
 
         # Set default width and linewidth if not provided
         if self.linewidth is None:
             self.linewidth = 1
-        if self.width is None:
-            self.width = 1
+        if self.barwidth is None:
+            self.barwidth = 1
 
     def plot(self):
         """
@@ -99,12 +116,32 @@ class BarPlot:
             The plot is displayed but not returned.
         """
         plt.style.use("_mpl-gallery")
-        fig, ax = plt.subplots()
-        ax.bar(self.x, self.y, width=self.width, edgecolor="black", linewidth=1)
+        fig, ax = plt.subplots(figsize=(self.width, self.height))
+        plt.title(self.title)
+        plt.xlabel(self.xlabel)
+        plt.ylabel(self.ylabel)
+        ax.bar(
+            self.x,
+            self.y,
+            width=self.barwidth,
+            edgecolor="black",
+            linewidth=self.linewidth,
+        )
         ax.set(
             xlim=(self.lowerlimx, self.upperlimx),
-            xticks=np.arange(self.lowerlimx + 1, self.upperlimx),
+            xticks=np.linspace(self.lowerlimx, self.upperlimx, min(10, len(self.x))),
             ylim=(self.lowerlimy, self.upperlimy),
-            yticks=np.arange(self.lowerlimy + 1, self.upperlimy),
+            yticks=np.arange(
+                self.lowerlimy + 1,
+                self.upperlimy,
+                1
+                + round(
+                    3.5
+                    * (
+                        math.sqrt(self.upperlimy - self.lowerlimy)
+                        / (self.height * self.height)
+                    )
+                ),
+            ),
         )
         plt.show()

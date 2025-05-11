@@ -6,12 +6,18 @@ import matplotlib.pyplot as plt
 
 def test_boxplot_creation():
     data = [1, 2, 3, 4, 5]
-    boxplot = BoxPlot(data, sym="r")
+    boxplot = BoxPlot(data, symbol="r")
     assert boxplot.data == data
-    assert boxplot.sym == "r"
+    assert boxplot.symbol == "r"
     assert boxplot.notch is False
     assert boxplot.vert is True
-    assert boxplot.whis == 1.5
+    assert boxplot.whisker_length == 1.5
+
+
+def test_boxplot_creation():
+    data = 6
+    with pytest.raises(TypeError):
+        BoxPlot(data)
 
 
 def test_boxplot_statistics():
@@ -30,11 +36,11 @@ def test_boxplot_statistics():
 
 def test_boxplot_parameters():
     data = [1, 2, 3, 4, 5]
-    boxplot = BoxPlot(data, notch=True, sym="x", vert=False, whis=2.0)
+    boxplot = BoxPlot(data, notch=True, symbol="x", vert=False, whisker_length=2.0)
     assert boxplot.notch is True
-    assert boxplot.sym == "x"
+    assert boxplot.symbol == "x"
     assert boxplot.vert is False
-    assert boxplot.whis == 2.0
+    assert boxplot.whisker_length == 2.0
 
 
 def test_boxplot_empty_data():
@@ -72,7 +78,7 @@ def test_quartiles_calculation():
 def test_outliers_detection():
     # Create data with known outliers
     data = [1, 2, 2, 3, 3, 3, 4, 4, 100, -100]  # 100 and -100 are outliers
-    boxplot = BoxPlot(data, whis=1.5)
+    boxplot = BoxPlot(data, whisker_length=1.5)
     outliers = boxplot.outliers()
     assert len(outliers) == 2
     assert 100 in outliers
@@ -92,7 +98,7 @@ def test_invalid_data_type():
 
 def test_negative_whis():
     with pytest.raises(ValueError):
-        BoxPlot([1, 2, 3], whis=-1.5)
+        BoxPlot([1, 2, 3], whisker_length=-1.5)
 
 
 def test_single_value_data():
