@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 
 
 class ScatterPlot:
@@ -130,9 +131,31 @@ class ScatterPlot:
         # Set limits and ticks for the x-axis and y-axis"""
         ax.set(
             xlim=(self.lowerlimx, self.upperlimx),
-            xticks=np.arange(self.lowerlimx + 1, self.upperlimx),
+            xticks=np.arange(
+                self.lowerlimx,
+                self.upperlimx + 1,
+                step=1
+                + round(
+                    1.5
+                    * (
+                        math.sqrt(self.upperlimx - self.lowerlimx)
+                        / (self.width * self.width * 5)
+                    )
+                ),
+            ),
             ylim=(self.lowerlimy, self.upperlimy),
-            yticks=np.arange(self.lowerlimy + 1, self.upperlimy),
+            yticks=np.arange(
+                self.lowerlimy,
+                self.upperlimy + 1,
+                step=1
+                + round(
+                    1.5
+                    * (
+                        math.sqrt(self.upperlimy - self.lowerlimy)
+                        / (self.width * self.width * 5)
+                    )
+                ),
+            ),
         )
         # Display the plot
         plt.show()
