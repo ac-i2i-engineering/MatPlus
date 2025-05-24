@@ -225,6 +225,7 @@ To contribute effectively to MatPlus, follow this Pull Request (PR) workflow:
 3. **Make Your Changes**:
    - Implement your feature or fix.
    - Follow coding standards and ensure documentation consistency.
+   - Update the [changelog](./CHANGELOG.md) describing your changes.
 
 4. **Run Tests Locally**:
    ```bash
