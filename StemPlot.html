@@ -1,0 +1,151 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stem Plot &mdash; MatPlus 0.2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=938c9ccc"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MatPlus
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="BarPlot.html">Bar Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BoxPlot.html">Box Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Histogram.html">Histogram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LinePlot.html">Line Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ScatterPlot.html">Scatter Plot</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MatPlus</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Stem Plot</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/StemPlot.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-MatPlus.StemPlot">
+<span id="stem-plot"></span><h1>Stem Plot<a class="headerlink" href="#module-MatPlus.StemPlot" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="MatPlus.StemPlot.StemPlot">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MatPlus.StemPlot.</span></span><span class="sig-name descname"><span class="pre">StemPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerlimx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerlimy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upperlimx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upperlimy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">markerfmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'o'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'vertical'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MatPlus/StemPlot.html#StemPlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MatPlus.StemPlot.StemPlot" title="Link to this definition"></a></dt>
+<dd><p>A class for creating Stem plots with customizable properties.
+The StemPlot class provides a simplified interface for creating stem plots
+with customizable axis limits and line properties such as line format, marker format,
+and base format.</p>
+<section id="parameters">
+<h2>Parameters:<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>x<span class="classifier">array-like</span></dt><dd><p>The x-values of the stem plot.</p>
+</dd>
+<dt>y<span class="classifier">array-like</span></dt><dd><p>The y-values of the stem plot.</p>
+</dd>
+<dt>lowerlimx<span class="classifier">float, optional</span></dt><dd><p>The lower limit of the x-axis. Default is 90% of the minimum x-value.</p>
+</dd>
+<dt>lowerlimy<span class="classifier">float, optional</span></dt><dd><p>The lower limit of the y-axis. Default is 90% of the minimum y-value.</p>
+</dd>
+<dt>upperlimx<span class="classifier">float, optional</span></dt><dd><p>The upper limit of the x-axis. Default is 110% of the maximum x-value.</p>
+</dd>
+<dt>upperlimy<span class="classifier">float, optional</span></dt><dd><p>The upper limit of the y-axis. Default is 110% of the maximum y-value.</p>
+</dd>
+<dt>linefmt<span class="classifier">str, optional</span></dt><dd><p>Format string for the vertical lines in the stem plot. Default is ‘-‘.</p>
+</dd>
+<dt>markerfmt<span class="classifier">str, optional</span></dt><dd><p>Format string for the markers at the stem heads. Default is ‘o’.</p>
+</dd>
+<dt>basefmt<span class="classifier">str, optional</span></dt><dd><p>Format string for the baseline. Default is ‘ ‘ (invisible).</p>
+</dd>
+<dt>label<span class="classifier">str, optional</span></dt><dd><p>Label for the stem plot. Default is None.</p>
+</dd>
+<dt>orientation<span class="classifier">str, optional</span></dt><dd><p>Orientation of the stem plot, either ‘vertical’ or ‘horizontal’. Default is ‘vertical’.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="MatPlus.StemPlot.StemPlot.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/MatPlus/StemPlot.html#StemPlot.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MatPlus.StemPlot.StemPlot.plot" title="Link to this definition"></a></dt>
+<dd><p>Constructs all the necessary attributes for the StemPlot object.
+Plot the stem plot with the given parameters.</p>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Liam Davis, Ryan Ji, Surya Rao, Weixin Lin, Dhyey Mavani.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
