@@ -73,7 +73,7 @@ box.plot()
 ```
 
 Histogram
-```
+```python
 from MatPlus import Histogram
 import numpy as np
 
@@ -83,7 +83,7 @@ hist.plot()
 ```
 
 Stem Plot
-```
+```python
 from MatPlus import StemPlot
 import numpy as np
 
