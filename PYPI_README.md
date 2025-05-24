@@ -82,6 +82,18 @@ hist = Histogram(data)
 hist.plot()
 ```
 
+Stem Plot
+```
+from MatPlus import StemPlot
+import numpy as np
+
+x = np.arange(0, 10)
+y = np.sin(x)
+
+stem = StemPlot(x, y)
+stem.plot()
+```
+
 ## Documentation
 For detailed API documentation, visit our [documentation site](https://ac-i2i-engineering.github.io/MatPlus/).
 
