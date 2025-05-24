@@ -3,6 +3,38 @@ import numpy as np
 
 
 class StemPlot:
+    """
+    A class for creating Stem plots with customizable properties.
+    The StemPlot class provides a simplified interface for creating stem plots
+    with customizable axis limits and line properties such as line format, marker format,
+    and base format.
+
+    Parameters:
+    ----------
+    x : array-like
+        The x-values of the stem plot.
+    y : array-like
+        The y-values of the stem plot.
+    lowerlimx : float, optional
+        The lower limit of the x-axis. Default is 90% of the minimum x-value.
+    lowerlimy : float, optional
+        The lower limit of the y-axis. Default is 90% of the minimum y-value.
+    upperlimx : float, optional
+        The upper limit of the x-axis. Default is 110% of the maximum x-value.
+    upperlimy : float, optional
+        The upper limit of the y-axis. Default is 110% of the maximum y-value.
+    linefmt : str, optional
+        Format string for the vertical lines in the stem plot. Default is '-'.
+    markerfmt : str, optional
+        Format string for the markers at the stem heads. Default is 'o'.
+    basefmt : str, optional
+        Format string for the baseline. Default is ' ' (invisible).
+    label : str, optional
+        Label for the stem plot. Default is None.
+    orientation : str, optional
+        Orientation of the stem plot, either 'vertical' or 'horizontal'. Default is 'vertical'.
+    """
+
     def __init__(
         self,
         x,
@@ -17,33 +49,6 @@ class StemPlot:
         label=None,  # Keep for backward compatibility but it won't be used
         orientation="vertical",
     ):
-        """
-        A class to create stem plots with optional axis limits and styling.
-        Parameters:
-        x : array-like
-            The x-values of the stem plot.
-        y : array-like
-            The y-values of the stem plot.
-        lowerlimx : float, optional
-            The lower limit of the x-axis.
-        lowerlimy : float, optional
-            The lower limit of the y-axis.
-        upperlimx : float, optional
-            The upper limit of the x-axis.
-        upperlimy : float, optional
-            The upper limit of the y-axis.
-        linefmt : str, optional
-            A string defining the properties of the vertical lines in the stem plot.
-        markerfmt : str, optional
-            A string defining the properties of the markers at the stem heads.
-        basefmt : str, optional
-            A string defining the properties of the baseline.
-        label : str, optional
-            The label for the stem plot.
-        orientation : str, optional
-            The orientation of the stem plot, either 'vertical' or 'horizontal'.
-        """
-
         self.x = np.array(x)
         self.y = np.array(y)
         self.lowerlimx = lowerlimx
