@@ -21,4 +21,5 @@ MatPlus is a Python package for easy, convenient plotting.
    Histogram
    LinePlot
    ScatterPlot
+   StemPlot
 
