@@ -75,7 +75,7 @@ class BoxPlot:
             raise TypeError("All elements must be numeric")
 
         # Validate data length
-        if not data or len(data) == 0:
+        if len(data) == 0:
             raise ValueError("Data array cannot be empty")
 
         # Validate whisker_length parameter
