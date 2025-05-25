@@ -33,6 +33,26 @@ class StemPlot:
         Label for the stem plot. Default is None.
     orientation : str, optional
         Orientation of the stem plot, either 'vertical' or 'horizontal'. Default is 'vertical'.
+
+    Examples
+    --------
+    >>> # Basic stem plot
+    >>> x = [1, 2, 3, 4, 5]
+    >>> y = [1, 4, 9, 16, 25]
+    >>> stem = StemPlot(x, y)
+    >>> stem.plot()
+
+    >>> # Stem plot with custom line and marker formats
+    >>> stem = StemPlot(x, y, linefmt='--r', markerfmt='^g')
+    >>> stem.plot()
+
+    >>> # Stem plot with a visible baseline
+    >>> stem = StemPlot(x, y, basefmt='-', label="Quadratic Data")
+    >>> stem.plot()
+
+    >>> # Horizontal stem plot
+    >>> stem = StemPlot(x, y, orientation="horizontal")
+    >>> stem.plot()
     """
 
     def __init__(
@@ -77,6 +97,11 @@ class StemPlot:
         """
         Constructs all the necessary attributes for the StemPlot object.
         Plot the stem plot with the given parameters.
+
+        Returns
+        -------
+        None
+            The plot is displayed but not returned.
         """
         # Plots the stem plot with the given parameters.
         fig, ax = plt.subplots()
