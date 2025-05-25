@@ -2,7 +2,7 @@
 
 ### Next Release
 
-### Version 0.2.0
+### Version 0.2.x
 - Supported plots:
   - BarPlot - Create customizable bar charts
   - ScatterPlot - Generate scatter plots with various styling options
