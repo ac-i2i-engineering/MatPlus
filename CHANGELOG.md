@@ -2,7 +2,10 @@
 
 ### Next Release
 
-### Version 0.2.x
+### Version 0.2.1
+- Add support for numpy arrays in BoxPlot
+
+### Version 0.2.0
 - Supported plots:
   - BarPlot - Create customizable bar charts
   - ScatterPlot - Generate scatter plots with various styling options
