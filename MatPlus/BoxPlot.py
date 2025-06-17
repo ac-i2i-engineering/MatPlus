@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import math
+import pandas as pd
 
 
 class BoxPlot:
@@ -65,8 +66,12 @@ class BoxPlot:
         ylabel=None,
     ):
         # Validate data type
-        if not isinstance(data, (list, np.ndarray)):
-            raise TypeError("Data must be a list or numpy array")
+        if not (
+            isinstance(data, list)
+            or isinstance(data, np.ndarray)
+            or isinstance(data, pd.Series)
+        ):
+            raise TypeError("Data must be a list or numpy array or pandas Series")
 
         # Validate numeric data
         try:
