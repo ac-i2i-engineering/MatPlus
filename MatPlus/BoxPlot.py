@@ -66,12 +66,11 @@ class BoxPlot:
         ylabel=None,
     ):
         # Validate data type
-        if not (
-            isinstance(data, list)
-            or isinstance(data, np.ndarray)
-            or isinstance(data, pd.Series)
-        ):
-            raise TypeError("Data must be a list or numpy array or pandas Series")
+        # Use duck typing or numpy's array_like conversion
+        try:
+            self.data = np.asarray(data, dtype=float)
+        except (ValueError, TypeError):
+            raise TypeError("Data must be convertible to a numeric array")
 
         # Validate numeric data
         try:
