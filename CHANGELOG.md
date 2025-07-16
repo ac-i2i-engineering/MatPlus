@@ -1,6 +1,7 @@
 # Changelog
 
 ### Next Release
+- Added support for Pandas in BoxPlot
 
 ### Version 0.2.1
 - Add support for numpy arrays in BoxPlot
