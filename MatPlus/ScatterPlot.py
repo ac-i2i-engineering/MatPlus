@@ -35,7 +35,8 @@ class ScatterPlot:
     width : float, optional
         The width of the plot. Default is 1.
     height : float, optional
-        The height of the plot. Default is 1.
+        The height of the plot in inches. Controls the vertical size of the figure. Default is 1.
+
 
     Examples
     --------
