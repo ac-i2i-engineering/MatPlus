@@ -112,6 +112,9 @@
 <span class="sd">        The maximum value for color scaling. Default is 0.</span>
 <span class="sd">    width : float, optional</span>
 <span class="sd">        The width of the plot. Default is 1.</span>
+<span class="sd">    height : float, optional</span>
+<span class="sd">        The height of the plot in inches. Controls the vertical size of the figure. Default is 1.</span>
+
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -143,6 +146,7 @@
         <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">vmax</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="nb">type</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
@@ -156,6 +160,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">vmin</span> <span class="o">=</span> <span class="n">vmin</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vmax</span> <span class="o">=</span> <span class="n">vmax</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
 
         <span class="c1"># Set default axis limits if not provided</span>
         <span class="c1"># Lower limit for x-axis/y-axis</span>
@@ -186,7 +191,7 @@
 <span class="sd">            The plot is displayed but not returned.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Plots the scatter plot with the given parameters</span>
-        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">))</span>
 
         <span class="c1"># Plot scatter plot with sizes and colors if both are provided</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
@@ -219,7 +224,7 @@
                     <span class="mf">1.5</span>
                     <span class="o">*</span> <span class="p">(</span>
                         <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">upperlimx</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">lowerlimx</span><span class="p">)</span>
-                        <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
+                        <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
                     <span class="p">)</span>
                 <span class="p">),</span>
             <span class="p">),</span>
@@ -232,7 +237,7 @@
                     <span class="mf">1.5</span>
                     <span class="o">*</span> <span class="p">(</span>
                         <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">upperlimy</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">lowerlimy</span><span class="p">)</span>
-                        <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
+                        <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
                     <span class="p">)</span>
                 <span class="p">),</span>
             <span class="p">),</span>
