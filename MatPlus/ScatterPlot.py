@@ -34,6 +34,9 @@ class ScatterPlot:
         The maximum value for color scaling. Default is 0.
     width : float, optional
         The width of the plot. Default is 1.
+    height : float, optional
+        The height of the plot in inches. Controls the vertical size of the figure. Default is 1.
+
 
     Examples
     --------
@@ -65,6 +68,7 @@ class ScatterPlot:
         vmin=0,
         vmax=0,
         width=1,
+        height=1,
     ):
         self.type = type
         self.x = x
@@ -78,6 +82,7 @@ class ScatterPlot:
         self.vmin = vmin
         self.vmax = vmax
         self.width = width
+        self.height = height
 
         # Set default axis limits if not provided
         # Lower limit for x-axis/y-axis
@@ -106,7 +111,7 @@ class ScatterPlot:
             The plot is displayed but not returned.
         """
         # Plots the scatter plot with the given parameters
-        fig, ax = plt.subplots()
+        fig, ax = plt.subplots(figsize=(self.width, self.height))
 
         # Plot scatter plot with sizes and colors if both are provided
         if len(self.sizes) != 0 and len(self.colors) != 0:
@@ -139,7 +144,7 @@ class ScatterPlot:
                     1.5
                     * (
                         math.sqrt(self.upperlimx - self.lowerlimx)
-                        / (self.width * self.width * 5)
+                        / (self.width * self.height * 5)
                     )
                 ),
             ),
@@ -152,7 +157,7 @@ class ScatterPlot:
                     1.5
                     * (
                         math.sqrt(self.upperlimy - self.lowerlimy)
-                        / (self.width * self.width * 5)
+                        / (self.width * self.height * 5)
                     )
                 ),
             ),
